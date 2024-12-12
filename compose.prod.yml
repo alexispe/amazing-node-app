@@ -1,0 +1,13 @@
+services:
+  nodejs:
+    image: ghcr.io/alexispe/amazing-node-app/nodejs:main
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "3001:3001"
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --label-enable --interval 30
