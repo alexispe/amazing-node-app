@@ -1,0 +1,10 @@
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: nodejs
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
