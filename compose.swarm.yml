@@ -4,6 +4,8 @@ services:
     deploy:
       mode: replicated
       replicas: 3
+      update_config:
+        failure_action: rollback
       restart_policy:
         max_attempts: 2
       labels:
