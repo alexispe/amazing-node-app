@@ -8,4 +8,4 @@ ENV NODE_ENV=production
 
 EXPOSE 3001
 
-CMD ["node", "app.js"]
+CMD ["node", "appkjhkjh.js"]

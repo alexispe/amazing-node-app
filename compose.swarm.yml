@@ -4,6 +4,8 @@ services:
     deploy:
       mode: replicated
       replicas: 3
+      restart_policy:
+        max_attempts: 2
       labels:
         - "traefik.http.routers.nodejs.rule=PathPrefix(`/`)"
         - "traefik.http.services.nodejs.loadbalancer.server.port=3001"
