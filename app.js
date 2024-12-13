@@ -7,6 +7,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(3001, () => {
-    console.log('App running on port 3001 !');
+    console.log('App running on port 3001 ! Nouvelle image');
     console.log(process.env.NODE_ENV)
 });

@@ -1,0 +1,26 @@
+services:
+  nodejs:
+    image: ghcr.io/alexispe/amazing-node-app/nodejs:main
+    deploy:
+      mode: replicated
+      replicas: 3
+      labels:
+        - "traefik.http.routers.nodejs.rule=PathPrefix(`/`)"
+        - "traefik.http.services.nodejs.loadbalancer.server.port=3001"
+
+  loadbalancer:
+    image: traefik:v3.2
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command:
+      - "--providers.swarm.endpoint=unix:///var/run/docker.sock"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - target: 80
+        published: 80
+        mode: host
+        protocol: tcp

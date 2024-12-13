@@ -1,5 +1,12 @@
 services:
-  nodejs:
+  app1:
+    image: ghcr.io/alexispe/amazing-node-app/nodejs:main
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - "3001:3001"
+
+  app2:
     image: ghcr.io/alexispe/amazing-node-app/nodejs:main
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
