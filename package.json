@@ -4,7 +4,7 @@
   "description": "App Node.js avec Redis",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "express": "^4.17.1",

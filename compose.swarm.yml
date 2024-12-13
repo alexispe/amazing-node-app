@@ -28,6 +28,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     command:
+      - "--log.level=DEBUG"
       - "--providers.swarm.endpoint=unix:///var/run/docker.sock"
       - "--entrypoints.web.address=:80"
     ports:
