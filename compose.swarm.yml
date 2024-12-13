@@ -12,6 +12,13 @@ services:
         - "traefik.http.routers.nodejs.rule=PathPrefix(`/`)"
         - "traefik.http.services.nodejs.loadbalancer.server.port=3001"
 
+  redis:
+    image: redis:alpine
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+
   loadbalancer:
     image: traefik:v3.2
     deploy:

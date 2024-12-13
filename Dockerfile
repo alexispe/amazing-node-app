@@ -1,11 +1,15 @@
 FROM node:22-alpine AS nodejs
 
+ENV NODE_ENV=production
+
 WORKDIR /app
 
-COPY app.js .
+COPY package*.json  ./
+COPY app.js  ./
 
-ENV NODE_ENV=production
+
+RUN npm install
 
 EXPOSE 3001
 
-CMD ["node", "app.js"]
+CMD ["npm", "start"]
