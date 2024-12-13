@@ -43,15 +43,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build-and-push-image
-    permissions:
-      contents: read
-      packages: write
-      attestations: write
-      id-token: write
     steps:
       - uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
       - run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "\
-          ls -lah"
+          sudo docker stack deploy --compose-file compose.yml node-app"
